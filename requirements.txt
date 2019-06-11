@@ -1,0 +1,9 @@
+houdini.py
+misaka
+pygments
+pyyaml
+jinja2
+lxml
+pydblite
+bs4
+pillow
