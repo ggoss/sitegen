@@ -1,0 +1,301 @@
+/* Fonts */
+
+:root {
+  --font-sans: 'Source Sans Pro', 'Roboto', 'Ubuntu', 'Segoe UI', 'Fira Sans', 'Droid Sans', Helvetica, sans-serif;
+  --font-serif: 'Source Serif Pro', Georgia, serif;
+  --font-mono: 'Source Code Pro', Courier, monospace;
+}
+
+/* Colors */
+
+:root {
+  --gg-blue: #0052CC;
+  --gg-light-blue: #00B8D9;
+  --gg-navy: #172B4D;
+  --gg-white: #FFFFFF;
+  --gg-red: #FF5630;
+  --gg-deep-red: #BF2600;
+  --gg-salmon: #FF7452;
+  --gg-gold: #FFAB00;
+  --gg-green: #36B37E;
+  --gg-dark-green: #00875A;
+  --gg-purple: #6554C0;
+}
+
+/* Universal styling */
+
+a {
+  color: var(--gg-purple);
+}
+
+h1 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  padding-bottom: .1em;
+  padding-top: .3em;
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: normal;
+  font-variant-caps: normal;
+  padding-bottom: .25em;
+  padding-top: .5em;
+  letter-spacing: 0em;
+  border-bottom: 1px solid #eee;
+}
+
+h3 {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: 0em;
+  padding-bottom: .25em;
+  padding-top: 0.5em;
+}
+
+h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0em;
+  padding-bottom: .25em;
+  padding-top: .5em;
+}
+
+p {
+  margin-left: 0.25em;
+}
+
+figure {
+  margin-left: 0.25em;
+}
+
+blockquote {
+  font-family: var(--font-sans);
+  color: var(--gg-purple);
+  font-style: normal;
+  padding-left: 1em;
+  border-left: 2px solid #eee;
+  margin-left: 1.25em;
+}
+
+blockquote p {
+  font-size: 17.5px;
+  margin-bottom: 0.5em;
+}
+
+blockquote footer {
+  color: #666;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  background-color: #eee;
+  padding: 1rem;
+  line-height: 1.5;
+  margin-left: 0.25em;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: #222222;
+  background-color: #eee;
+}
+
+pre code {
+  white-space: pre;
+  word-wrap: normal;
+}
+
+kbd {
+  border-radius: 0.3em;
+}
+
+ul, ol {
+  padding-left: 1em;
+  margin-left: 0.5em;
+}
+
+table {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  margin-left: 0.25em;
+}
+
+:root {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.container {
+  min-height: 70%;
+  min-height: calc(100% - 100px);
+  min-height: -webkit-calc(100% - 100px);
+  position: relative;
+}
+
+.header {
+  position: static;
+  top: 0;
+  margin-bottom: 20px;
+  font-family: var(--font-sans);
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.navbar-brand {
+  font-size: 20px;
+}
+
+.page-title {
+  text-transform: none;
+  font-family: var(--font-sans);
+  font-weight: bold;
+  margin-bottom: 0.2em;
+  letter-spacing: 0.05em;
+  font-size: 48px;
+}
+
+.content {
+  padding-bottom: 3em;
+  min-height: 100%;
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  margin-top: -50px;
+  height: 50px;
+  width: 100%;
+  font-family: var(--font-sans);
+}
+
+.copyright {
+  font-size: 15px;
+  margin-left: 0px;
+}
+
+.footer-links {
+  font-size: 15px;
+}
+
+/* Styling for blog posts (index and individual post pages) */
+
+.post {
+  margin-top: 0;
+}
+
+.post-body {
+  margin-top: 0;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #eee;
+}
+
+.post-title {
+  margin-bottom: 0;
+}
+
+.post-description {
+  font-family: var(--font-sans);
+  margin-bottom: 0;
+  font-size: 18px;
+  color: var(--gg-purple);
+}
+
+.post-meta {
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+
+.post-topics {
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.post-body {
+  max-width: 100%;
+}
+
+.post-comments-nojs {
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+
+.post-comments-link {
+  font-family: var(--font-sans);
+}
+
+.figure-caption {
+  font-size: 15px;
+}
+
+.sidebar {
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+
+.sidebar-header {
+  margin-bottom: 0px;
+  font-size: 16px;
+}
+
+.sidebar-list {
+  padding-left: 0px;
+  list-style-type: none;
+}
+
+.next-prev {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Styling for all-topics page */
+
+.topic-list {
+  padding-left: 1em;
+  margin-bottom: 0.5em;
+  list-style-type: square;
+  text-align: left;
+}
+
+.topic-list-title {
+  text-transform: capitalize;
+}
+
+.topic-list-date {
+  font-size: 14px;
+}
+
+/* Styling for about page */
+
+.about-page-lead {
+  text-align: justify;
+  color: var(--gg-purple);
+}
+
+.about-page-avatar {
+  margin-bottom: 1em;
+}
+
+.about-page-text {
+  text-align: justify;
+}
+

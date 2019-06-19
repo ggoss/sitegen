@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html class="html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{ post_title }} | Blog</title>
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="charset" content="utf-8">
+    <meta name="description" content="{{ post_description }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+Pro">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/vs_mod.css">
+
+
+</head>
+
+<body class="body">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+        <nav class="navbar navbar-light navbar-expand-md fixed-top header" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+            <div class="container"><a class="navbar-brand" href="/">Author</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" role="presentation"><a class="nav-link" itemprop="url" href="/">Blog</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" itemprop="url" href="/about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="content">
+            <div class="row"><div class="col-lg-3 d-none d-lg-inline d-print-none order-2 sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+    {% if render_toc is sameas true %}
+        {{ toc_list|render_sidebar_toc }}
+    {% endif %}
+    {% if related_posts is not none %}
+        <h3 class="sidebar-header">Related Posts</h3>
+        <ul class="sidebar-list">
+            {% for related_post in related_posts %}
+            <li><a href="{{ post_db[related_post].url }}">{{ post_db[related_post].post_title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+                <div class="col-sm-12 col-lg-9"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="row no-gutters">
+        <div class="col">
+            <header id="post-header">
+                <h1 class="post-title" itemprop="headline"><a class="text-dark" href="{{ url }}">{{ post_title }}</a></h1>
+                {% if post_description is not none %}
+                <p class="post-description" itemprop="alternativeHeadline">{{ post_description }}</p>
+                {% endif %}
+                <p class="text-muted post-meta">Posted by <span itemprop="author">{{ author }}</span> on <time itemprop="dateCreated datePublished"
+datetime="{{ date }}">{{ date|get_pretty_date }} — </time><span class="post-topics" itemprop="keywords">{{ topics|get_topic_url_links|join(', ') }}</span>
+    </p>
+            </header>
+        </div>
+    </div>
+    <div class="row no-gutters post-body">
+        <div class="col" itemprop="articleBody">
+            {{ post_body }}
+            <hr />
+            {% if enable_comments is sameas true %}
+            <p class="text-muted">To leave a comment below, sign in using Github.</p>
+            <!--<div id="post_comments" itemprop="comment">
+                <script src="https://utteranc.es/client.js"
+                    repo="[ENTER REPO HERE]"
+                    issue-term="pathname"
+                    label="comments"
+                    theme="github-light"
+                    crossorigin="anonymous"
+                    async>
+                </script>
+                <noscript class="text-muted post-comments-nojs">To view or make comments, please enable JavaScript. Comments powered by <a href="https://utteranc.es/">utteranc.es</a> and <a href="https://help.github.com/en/articles/about-issues">Github issues.</a></noscript>
+            </div>-->
+            {% else %}
+            <p class="text-muted">Comments disabled for this post.</p>
+            {% endif %}
+        </div>
+    </div>
+</article></div>
+            </div>
+        </section>
+        <section class="text-muted footer" itemscope="" itemtype="http://schema.org/WPFooter" style="padding-right: 1em;padding-left: 0px;">
+            <div class="col-sm-12 col-lg-9" style="padding-left: 0px;">
+                <footer><p class="copyright float-left">
+    <span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Author</span>
+    </span> &copy;
+    <span itemprop="copyrightYear">
+        <noscript>
+            2019
+        </noscript>
+        <script>
+            var date = new Date();
+            var year = date.getFullYear();
+            if (year > 2019) {
+                year = 2019 + ' - ' + year;
+            }
+            document.write(year);
+        </script>
+    </span>
+</p></footer>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

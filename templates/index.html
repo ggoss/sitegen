@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html class="html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blog {% if current_page is greaterthan 1 %}| Page {{ current_page }}{% endif %}</title>
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="charset" content="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.3.1/yeti/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+Pro">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/vs_mod.css">
+
+{{ rel_links }}
+</head>
+
+<body class="body" itemscope="" itemtype="http://schema.org/WebPage">
+    <header class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+        <nav class="navbar navbar-light navbar-expand-md fixed-top header" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+            <div class="container"><a class="navbar-brand" href="/">Author</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" itemprop="url" href="/">Blog</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" itemprop="url" href="/about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" itemscope="" itemtype="http://schema.org/Blog">
+        <section class="content"><div>{% for post in pagination_dict[current_page].posts %}
+    <div class="row">
+        <div class="col-lg-3 d-none d-lg-inline d-print-none order-2 sidebar">
+            {% if post_db[post].render_toc is sameas true %} {{ post_db[post].toc_list|render_sidebar_toc }} {% endif %} {% if post_db[post].related_posts is not none %}
+            <h3 class="sidebar-header">Related Posts</h3>
+            <ul class="sidebar-list">
+                {% for related_post in post_db[post].related_posts %}
+                <li><a href="{{ post_db[related_post].url }}">{{ post_db[related_post].post_title }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="col-sm-12 col-lg-9">
+            <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                <div class="row no-gutters">
+                    <div class="col">
+                        <header id="post-header">
+                            <h1 class="post-title" itemprop="headline"><a class="text-dark" href="{{ post_db[post].url }}">{{ post_db[post].post_title }}</a></h1>
+                            {% if post_db[post].post_description is not none %}
+                            <p class="post-description" itemprop="alternativeHeadline">{{ post_db[post].post_description }}</p>
+                            {% endif %}
+                            <p class="text-muted post-meta">
+                                Posted by <span itemprop="author">{{ post_db[post].author }}</span> on <time itemprop="dateCreated pubdate datePublished" datetime="{{ post_db[post].date }}">{{ post_db[post].date|get_pretty_date }} — </time><span class="post-topics" itemprop="keywords">{{ post_db[post].topics|get_topic_url_links|join(', ') }}</span>
+                            </p>
+                        </header>
+                    </div>
+                </div>
+                <div class="row no-gutters post-body">
+                    <div class="col" itemprop="articleBody">
+                        {{ post_db[post].post_body }}
+                        {% if post_db[post].enable_comments is sameas True %}
+                        <p><a class="text-muted post-comments-link" href="{{ post_db[post].url }}#post_comments">Have something to say? Leave a comment.</a></p>
+                        {% else %}
+                        <p class="text-muted post-comments-link">Comments disabled for this post.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+{% endfor %}</div><div class="next-prev col-sm-12 col-lg-9 d-flex justify-content-between no-gutters" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <div class="col-sm-4 col-lg-3 text-left">
+        {% if pagination_dict.n_pages > 1 %}
+        {% if current_page < pagination_dict.n_pages %}
+        <a class="btn btn-outline-dark" role="button" itemprop="url" href="{{ pagination_dict[current_page + 1].url }}"><span itemprop="name">Older Posts</span></a> {% endif %}
+        {% endif %}
+    </div>
+    <div class="col-sm-4 col-lg-3 text-center">
+            <a class="btn btn-outline-dark" role="button" itemprop="url" href="/blog/all-posts.html"><span itemprop="name">All Posts</span></a>
+    </div>
+    <div class="col-sm-4 col-lg-3 text-right">
+        {% if pagination_dict.n_pages > 1 %}
+            {% if current_page > 1 %}
+            <a class="btn btn-outline-dark" role="button"  itemprop="url" href="{{ pagination_dict[current_page - 1].url }}"><span itemprop="name">Newer Posts</span></a><br /> {% endif %}
+        {% endif %}
+    </div>
+</div></section>
+        <section class="text-muted footer" itemscope="" itemtype="http://schema.org/WPFooter" style="padding-right: 1em;padding-left: 0px;">
+            <div class="col-sm-12 col-lg-9" style="padding-left: 0px;">
+                <footer><p class="copyright float-left">
+    <span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Author</span>
+    </span> &copy;
+    <span itemprop="copyrightYear">
+        <noscript>
+            2019
+        </noscript>
+        <script>
+            var date = new Date();
+            var year = date.getFullYear();
+            if (year > 2019) {
+                year = 2019 + ' - ' + year;
+            }
+            document.write(year);
+        </script>
+    </span>
+</p></footer>
+            </div>
+        </section>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
