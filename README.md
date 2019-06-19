@@ -31,7 +31,7 @@ Install dependencies:
 ```bash
 pip3 install -r requirements.txt
 ```
-NOTE: if you'd like to be able to losslessly reduce `svg` assets as part of the site generation process, download one of the pre-built releases of svgcleaner from https://github.com/RazrFalcon/svgcleaner/releases, and extract it to `sitegen/svgcleaner`. There are no `svgs` in the included example site, so you can get started without doing so.
+NOTE: if you'd like to be able to losslessly reduce `svg` assets as part of the site generation process, download one of the pre-built releases of svgcleaner from https://github.com/RazrFalcon/svgcleaner/releases, and extract it to `sitegen/svgcleaner`. There are no `svgs` in the included example site, so you can get started without this.
 
 ## Build the included example site:
 The test site should be successfully built to `sitegen/output` and served to `http://localhost:8000`
