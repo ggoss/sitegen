@@ -22,8 +22,8 @@ def build_toc_list(post: Dict[str, Union[str, list]]) -> List[Tuple[int, str, st
 
     for i, heading in enumerate(soup_post.find_all(['h2', 'h3', 'h4'])):
         heading_level = heading.name[-1]
-        heading_string = heading.string
-        heading_anchor = f'{post["slug"]}${sanitize_string(heading.string.lower().strip())}'
+        heading_string = heading.get_text()
+        heading_anchor = f'{post["slug"]}${sanitize_string(heading.get_text().lower().strip())}'
 
         all_anchors = [toc_item[2] for toc_item in toc_list]
         if heading_anchor in all_anchors:
@@ -95,7 +95,7 @@ def add_toc_id_tags(post: Dict[str, Union[str, list]]) -> Dict[str, str]:
 
     for heading in soup_post.find_all(['h2', 'h3', 'h4']):
         heading_level = heading.name[-1]
-        heading_string = heading.string
+        heading_string = heading.get_text()
         toc_item = toc_list.pop(0)
         if not ((toc_item[0] == heading_level) and (toc_item[1] == heading_string)):
             raise TocError('There is a mismatch between the toc_list and the post_body used to create it. WHAT DID YOU DO?!')
